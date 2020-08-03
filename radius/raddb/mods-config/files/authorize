@@ -1,1 +1,1 @@
-test    Cleartext-Password := "test"
+myuser    Cleartext-Password := "mypass"
