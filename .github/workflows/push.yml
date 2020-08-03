@@ -1,17 +1,14 @@
-on: push
-name: npm build, lint, test and publish2
 jobs:
-  build-and-publish:
-    name: build and publish
+  ci:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - name: Docker Login
-      env:
-        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-      run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-    - name: Docker Build & Publish Radius
-      run: |
-        docker build -f ./radius/Dockerfile -t ucipass/radius ./radius
-        docker push ucipass/radius
+      - uses: actions/checkout@v1
+      - name: Docker Login
+        env:
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+      - name: Docker Build & Publish Radius
+        run: |
+          docker build -f ./radius/Dockerfile -t ucipass/radius ./radius
+          docker push ucipass/radius
