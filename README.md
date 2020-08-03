@@ -1,4 +1,2 @@
-# Dockerfiles
-
-## Folders
+## Docker Folders
 - radius: Simple radius server with basic parameters based on Freeradius

@@ -1,6 +1,6 @@
 on: push
 jobs:
-  ci:
+  dockerpush:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
