@@ -9,7 +9,7 @@ jobs:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-      - name: Docker Build & Publish Radius
+      - name: Docker Build & Publish radius
         run: |
           docker build -f ./radius/Dockerfile -t ucipass/radius ./radius
           docker push ucipass/radius
