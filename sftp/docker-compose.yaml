@@ -1,0 +1,18 @@
+version: '3.7'
+x-SFTP_USERNAME : &SFTP_USERNAME SFTP_USERNAME=myuser
+x-SFTP_PASSWORD : &SFTP_PASSWORD SFTP_PASSWORD=mypass
+services:
+  sftp:
+    build:
+      context: .
+      dockerfile: Dockerfile    
+    container_name: "sftp" 
+    image: ucipass/sftp
+    environment: 
+      - *SFTP_USERNAME
+      - *SFTP_PASSWORD   
+    ports: 
+      - "22:22"
+    volumes:
+      - C:\tmp:/myuser
+
