@@ -1,0 +1,16 @@
+version: '3.7'
+services:
+    oc:
+        container_name: "oc"
+        image: ucipass/openconenct
+        build:
+            context: .
+            dockerfile: Dockerfile    
+        image: ucipass/openconnect
+        ports:
+            - "2222:22"
+            - "3128:3128"
+        environment: 
+        - HOST=myvpn.foo.com
+        - USER=myuser
+        command: "/root/init.sh"
