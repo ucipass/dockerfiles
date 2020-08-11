@@ -14,7 +14,6 @@ RUN set -xe \
     && apk add --no-cache bash \
     && ssh-keygen -f /etc/ssh/ssh_host_rsa_key -N '' -t rsa  \
     && ssh-keygen -f /etc/ssh/ssh_host_dsa_key -N '' -t dsa \
-    && echo ChrootDirectory /myuser >> /etc/ssh/sshd_config \
     && echo PermitEmptyPasswords yes >> /etc/ssh/sshd_config \
     && echo PermitRootLogin  yes >> /etc/ssh/sshd_config \
     && echo PermitEmptyPasswords  yes >> /etc/ssh/sshd_config \
@@ -23,6 +22,11 @@ RUN set -xe \
     && echo PermitTunnel yes >> /etc/ssh/sshd_config \
     && sed -i '/AllowTcpForwarding/d' /etc/ssh/sshd_config \
     && echo AllowTcpForwarding local >> /etc/ssh/sshd_config \
+    && echo Match User myuser >> /etc/ssh/sshd_config \
+    && echo   ChrootDirectory /myuser >> /etc/ssh/sshd_config \
+    && echo   ForceCommand internal-sftp >> /etc/ssh/sshd_config \
+    && echo   AllowTcpForwarding no >> /etc/ssh/sshd_config \
+    && echo   X11Forwarding no >> /etc/ssh/sshd_config \
     && adduser myuser -h /myuser -D \
     && echo "myuser:mypass" | chpasswd \
     && passwd -d root
