@@ -9,11 +9,12 @@ WORKDIR /root
 RUN set -xe \
     && apk add --no-cache openrc \
     && apk add --no-cache openssh \
-    && rc-update add sshd \
+    && rc-update add sshd  \
     && apk add --no-cache curl \
     && apk add --no-cache bash \
     && ssh-keygen -f /etc/ssh/ssh_host_rsa_key -N '' -t rsa \
     && ssh-keygen -f /etc/ssh/ssh_host_dsa_key -N '' -t dsa \
+    && echo ChrootDirectory /myuser >> /etc/ssh/sshd_config \
     && echo PermitEmptyPasswords yes >> /etc/ssh/sshd_config \
     && echo PermitRootLogin  yes >> /etc/ssh/sshd_config \
     && echo PermitEmptyPasswords  yes >> /etc/ssh/sshd_config \
