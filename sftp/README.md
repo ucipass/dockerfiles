@@ -5,7 +5,7 @@ root user has no password set
 ## Settings for SFTP Transfer
 
 - ports: 22
-- SFTP dir: /myuser
+- SFTP root dir: /myuser
 - username: myuser
 - password: mypass
 
