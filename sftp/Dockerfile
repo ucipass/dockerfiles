@@ -22,15 +22,10 @@ RUN set -xe \
     && echo PermitTunnel yes >> /etc/ssh/sshd_config \
     && sed -i '/AllowTcpForwarding/d' /etc/ssh/sshd_config \
     && echo AllowTcpForwarding local >> /etc/ssh/sshd_config \
-    && echo Match User myuser >> /etc/ssh/sshd_config \
-    && echo "  ChrootDirectory /myuser" >> /etc/ssh/sshd_config \
-    && echo "  ForceCommand internal-sftp" >> /etc/ssh/sshd_config \
-    && echo "  AllowTcpForwarding no" >> /etc/ssh/sshd_config \
-    && echo "  X11Forwarding no" >> /etc/ssh/sshd_config \
-    && adduser myuser -h /myuser -D \
+	&& ForceCommand internal-sftp -d /sftp \
+    && adduser myuser -h /sftp -D \
     && echo "myuser:mypass" | chpasswd \
     && passwd -d root
-
 
 ENTRYPOINT ["/usr/sbin/sshd","-D"]
 # CMD ["tail", "-f", "/dev/null"]
