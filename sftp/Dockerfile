@@ -1,11 +1,6 @@
 FROM alpine:latest
 WORKDIR /root
-# COPY csd-wrapper.sh .cisco/csd-wrapper.sh
-# COPY init.sh ./init.sh
-# COPY interactive.sh ./interactive.sh
-# COPY proxy.js ./proxy.js
-# COPY package.json ./package.json
-# RUN chmod +x ./*
+
 RUN set -xe \
     && apk add --no-cache openrc \
     && apk add --no-cache openssh \
@@ -17,6 +12,7 @@ RUN set -xe \
     && adduser myuser -h /sftp -D \
     && echo "myuser:mypass" | chpasswd \
     && passwd -d root
+
 COPY sshd_config /etc/ssh/
 
 ENTRYPOINT ["/usr/sbin/sshd","-D"]
