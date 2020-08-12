@@ -22,7 +22,7 @@ RUN set -xe \
     && echo PermitTunnel yes >> /etc/ssh/sshd_config \
     && sed -i '/AllowTcpForwarding/d' /etc/ssh/sshd_config \
     && echo AllowTcpForwarding local >> /etc/ssh/sshd_config \
-	&& ForceCommand internal-sftp -d /sftp \
+	&& echo ForceCommand internal-sftp -d /sftp >> /etc/ssh/sshd_config \
     && adduser myuser -h /sftp -D \
     && echo "myuser:mypass" | chpasswd \
     && passwd -d root
