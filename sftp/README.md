@@ -9,8 +9,8 @@ root user has no password set
 - username: myuser
 - password: mypass
 
-## Startup for Windows with C:/tmp as the mounted SFTP root
+## Startup for Windows with C:/sftp as the mounted SFTP root
 docker run -d --rm --name sftp -v C:\sftp:/sftp -p 22:22 ucipass/sftp
 
 ## Startup for Linux with /tmp as the mounted SFTP root
-docker run -d --rm --name sftp -v /sftp:/sftp -p 22:22 ucipass/sftp
+docker run -d --rm --name sftp -v /tmp:/sftp -p 22:22 ucipass/sftp
