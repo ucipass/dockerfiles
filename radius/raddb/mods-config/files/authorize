@@ -1,1 +1,3 @@
 myuser    Cleartext-Password := "mypass"
+       Service-Type = NAS-Prompt-User,
+       Cisco-AVPair = "shell:priv-lvl=15"
