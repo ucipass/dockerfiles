@@ -13,4 +13,4 @@ services:
         environment: 
         - HOST=myvpn.foo.com
         - USER=myuser
-        command: "/root/init.sh"
+        command: "/root/interactive.sh"

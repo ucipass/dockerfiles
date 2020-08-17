@@ -1,25 +1,19 @@
-FROM alpine:latest
+FROM ubuntu:latest
 WORKDIR /root
 COPY csd-wrapper.sh .cisco/csd-wrapper.sh
-COPY init.sh ./init.sh
+COPY openconnect.sh ./openconnect.sh
 COPY interactive.sh ./interactive.sh
-COPY proxy.js ./proxy.js
+COPY proxy-linux ./proxy-linux
 COPY package.json ./package.json
 RUN chmod +x ./*
+ENV TZ=America/Chicago
+
 RUN set -xe \
-    && apk add --no-cache openrc \
-    && apk add --no-cache openssh \
-    && rc-update add sshd \
-    && apk add nodejs-current \
-    && apk add --update nodejs npm \
-    && npm install \
-    && apk add --no-cache curl \
-    && apk add --no-cache bash \
-    && apk add --no-cache \
-               --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing/ \
-               openconnect
-# CMD ["openconnect", "--csd-user=root", "--csd-wrapper=/root/.cisco/csd-wrapper.sh", "-b", "50.201.16.130"]
-# CMD ["/bin/sh","-c","openconnect --csd-user=root --csd-wrapper=/root/.cisco/csd-wrapper.sh -b 50.201.16.130 ; trap : TERM INT; (while true; do sleep 1000; done) & wait"]
-# ENTRYPOINT ["tail"]
-# CMD ["tail", "-f", "/dev/null"]
+    && apt-get update -y \
+    && DEBIAN_FRONTEND="noninteractive" apt-get -y install tzdata \
+    && apt-get install -y openssh-server openconnect bash nano curl 
+
+COPY sshd_config /etc/ssh/sshd_config
+
+# CMD ["/bin/sh","-c","openconnect --csd-user=root --csd-wrapper=/root/.cisco/csd-wrapper.sh -b <IP> ; trap : TERM INT; (while true; do sleep 1000; done) & wait"]
 CMD ["/bin/sh", "-c", "/root/interactive.sh"]
