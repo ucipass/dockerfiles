@@ -6,7 +6,7 @@ All of these Docker containers are meant to be in a test/dev environment and mus
 - sftp:   Simple SFTP/SCP server based on OpenSSH
 
 ## Docker Cheat Sheet
-### RUN/STOP/DELETE
+### RUN/MANAGE
 | Command | Description |
 | --- | --- |
 | docker run IMAGE | run a new instance of container IMAGE |
@@ -16,7 +16,7 @@ All of these Docker containers are meant to be in a test/dev environment and mus
 | docker exec -it CONTAINERNAME /bin/bash | run command line in new process   |
 | docker attach CONTAINERNAME | standard input/output/error of the main process  |
 
-### CLEANUP
+### STOP/DELETE
 | Command | Description |
 | --- | --- |
 | docker stop CONTAINERID | STOP container with CONTAINERID |
