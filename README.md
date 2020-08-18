@@ -17,11 +17,15 @@ All of these Docker containers are meant to be in a test/dev environment and mus
 | docker attach CONTAINERNAME | standard input/output/error of the main process  |
 
 ### CLEANUP
+| Command | Description |
+| --- | --- |
 | docker stop CONTAINERID | STOP container with CONTAINERID |
 | docker stop $(docker ps -a -q) | STOP all containers |
 | docker rmi IMAGE | DELETE container IMAGE |
 | docker rmi $(docker ps -a -q) | DELETE all stopped containers |
 ### PUBLISH/BUILD
+| Command | Description |
+| --- | --- |
 | docker images | list all local Docker images |
 | docker build –f  Dockerfile -t USERNAME/IMAGEID . | Build Docker Image in from current directory using Dockerfile |
 | docker login --username=USERNAME | Login to Docker Hub as USERNAME|
