@@ -9,12 +9,12 @@ All of these Docker containers are meant to be in a test/dev environment and mus
 ### RUN/MANAGE
 | Command | Description |
 | --- | --- |
-| docker run IMAGE | run a new instance of container IMAGE |
-| docker run -it IMAGE | run container in interactive mode |
-| docker run --rm IMAGE | run container and remove container after it stops |
-| docker run --name CONTAINERNAME IMAGE | run container and assign name CONTAINERNAME |
-| docker exec -it CONTAINERNAME /bin/bash | run command line in new process   |
-| docker attach CONTAINERNAME | standard input/output/error of the main process  |
+| docker run IMAGE | Run a new instance of container IMAGE |
+| docker run -it IMAGE | Run container in interactive mode |
+| docker run --rm IMAGE | Run container and remove container after it stops |
+| docker run --name CONTAINERNAME IMAGE | Run container and assign name CONTAINERNAME |
+| docker exec -it CONTAINERNAME /bin/bash | Run command line in new process   |
+| docker attach CONTAINERNAME | Display standard input/output/error of the main process  |
 
 ### STOP/DELETE
 | Command | Description |
@@ -26,11 +26,11 @@ All of these Docker containers are meant to be in a test/dev environment and mus
 ### PUBLISH/BUILD
 | Command | Description |
 | --- | --- |
-| docker images | list all local Docker images |
+| docker images | List all local Docker images |
 | docker build –f  Dockerfile -t USERNAME/IMAGEID . | Build Docker Image in from current directory using Dockerfile |
 | docker login --username=USERNAME | Login to Docker Hub as USERNAME|
 | docker push USERNAME/IMAGEID | Push Image to Docker Hub |
 | docker pull USERNAME/IMAGEID | Pull Image from Docker Hub |
-| docker save USERNAME/IMAGE -o IMAGE.tar | save Docker image as tar archive |
-| docker load -i IMAGEID.tar | load Docker image as tar archive |
+| docker save USERNAME/IMAGE -o IMAGE.tar | Save Docker image as tar archive |
+| docker load -i IMAGEID.tar | Load Docker image as tar archive |
 
