@@ -25,8 +25,8 @@ All of these Docker containers are meant to be in a test/dev environment and mus
 | docker rm $(docker ps -a -q) | Delete all stopped containers |
 | docker rmi IMAGE | Delete container IMAGE |
 | docker rmi $(docker images -q) | Delete all container images |
-| docker rmi (docker images | grep "^<none>" | awk '{ print $3}') | Remove all <none> Docker images - Linux only |
-| docker rm $(docker ps -a | grep -v mongo | cut -d " " -f1)  | Delete all containers except with names mongo |
+| docker rmi (docker images \| grep "^<none>" \| awk '{ print $3}') | Remove all <none> Docker images - Linux only |
+| docker rm $(docker ps -a \| grep -v mongo \| cut -d " " -f1)  | Delete all containers except with names mongo |
 ### PUBLISH/BUILD
 | Command | Description |
 | --- | --- |
