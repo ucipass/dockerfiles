@@ -21,8 +21,12 @@ All of these Docker containers are meant to be in a test/dev environment and mus
 | --- | --- |
 | docker stop CONTAINERID | Stop container with CONTAINERID |
 | docker stop $(docker ps -a -q) | Stop all containers |
+| docker rm CONTAINERID | Delete container with CONTAINERID |
+| docker rm $(docker ps -a -q) | Delete all stopped containers |
 | docker rmi IMAGE | Delete container IMAGE |
-| docker rmi $(docker ps -a -q) | Delete all stopped containers |
+| docker rmi $(docker images -q) | Delete all container images |
+| docker rmi (docker images | grep "^<none>" | awk '{ print $3}') | Remove all <none> Docker images - Linux only |
+| docker rm $(docker ps -a | grep -v mongo | cut -d " " -f1)  | Delete all containers except with names mongo |
 ### PUBLISH/BUILD
 | Command | Description |
 | --- | --- |
@@ -33,4 +37,3 @@ All of these Docker containers are meant to be in a test/dev environment and mus
 | docker pull USERNAME/IMAGEID | Pull Image from Docker Hub |
 | docker save USERNAME/IMAGE -o IMAGE.tar | Save Docker image as tar archive |
 | docker load -i IMAGEID.tar | Load Docker image as tar archive |
-
