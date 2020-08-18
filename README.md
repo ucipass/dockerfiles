@@ -19,10 +19,10 @@ All of these Docker containers are meant to be in a test/dev environment and mus
 ### STOP/DELETE
 | Command | Description |
 | --- | --- |
-| docker stop CONTAINERID | STOP container with CONTAINERID |
-| docker stop $(docker ps -a -q) | STOP all containers |
-| docker rmi IMAGE | DELETE container IMAGE |
-| docker rmi $(docker ps -a -q) | DELETE all stopped containers |
+| docker stop CONTAINERID | Stop container with CONTAINERID |
+| docker stop $(docker ps -a -q) | Stop all containers |
+| docker rmi IMAGE | Delete container IMAGE |
+| docker rmi $(docker ps -a -q) | Delete all stopped containers |
 ### PUBLISH/BUILD
 | Command | Description |
 | --- | --- |
