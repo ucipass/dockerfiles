@@ -1,4 +1,5 @@
 # Radius Server
+This is generally an insecure setup that is only meant for temporary radius authentication testing
 ## Settings
 
 - ports: 1812-1813

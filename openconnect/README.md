@@ -1,8 +1,15 @@
 # Openconnect Docker Container
-Openconnect VPN Docker container with local SSH and Web proxy service. Mostly used for Cisco Anyconnect VPN connections on Linux hosts
+Cisco compatible VPN client in a Docker container with local SSH and Web proxy service.
+
+## Settings
+
+- Web Proxy port: 3128
+- SSH port: 22
+- username: root
+- password: <empty>
+
 
 ## Example
-3128 web proxy port
-2222 openssh server for tunneling
-
-    docker run --rm -e HOST=<HOSTNAME> -e USER=<USER> --name oc -it -p 3128:3128 -p 2222:22 --privileged ucipass/openconnect
+```
+docker run --rm -e HOST=<HOSTNAME> -e USER=<USER> --name oc -it -p 3128:3128 -p 2222:22 --privileged ucipass/openconnect
+```
