@@ -2,6 +2,7 @@
 
 All of these Docker containers are meant to be in a test/dev environment and must be considered as insecure for long-term use!
 
+- coredns: Simple DNS server with basic parameters based on CoreDNS
 - radius: Simple Radius server with basic parameters based on Freeradius
 - sftp:   Simple SFTP/SCP server based on OpenSSH
 - openconnect: Cisco compatible VPN client in a Docker container
