@@ -4,8 +4,8 @@
     errors
 }
 
-home:53 {
-    file /root/home.db
+example.com:53 {
+    file /root/example.com.db
     log
     errors
 }

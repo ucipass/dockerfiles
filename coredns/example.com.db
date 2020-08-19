@@ -1,0 +1,4 @@
+example.com.           IN  SOA dns.example.com. postmaster.example.com. 2020072212 7200 3600 1209600 3600
+host11      IN  A       172.18.100.11
+host12      IN  A       172.18.100.12
+host13      IN  A       172.18.100.13
