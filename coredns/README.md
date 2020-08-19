@@ -1,4 +1,4 @@
-## USage
+## CoreDNS Server
 - Copy corefile and dns database file e.g. example.com.db to a local directory that will be used as a Docker volume
 - Make changes to the zone and/or dns records
 
