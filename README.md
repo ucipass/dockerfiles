@@ -17,6 +17,7 @@ All of these Docker containers are meant to be in a test/dev environment and mus
 | docker run --name CONTAINERNAME IMAGE | Run container and assign name CONTAINERNAME |
 | docker exec -it CONTAINERNAME /bin/bash | Run command line in new process   |
 | docker attach CONTAINERNAME | Display standard input/output/error of the main process  |
+| docker container inspect CONTAINERNAME | Display detailed info about container |
 
 ### STOP/DELETE
 | Command | Description |
