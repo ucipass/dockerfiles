@@ -5,7 +5,8 @@ COPY openconnect.sh ./openconnect.sh
 COPY interactive.sh ./interactive.sh
 COPY proxy-linux ./proxy-linux
 COPY package.json ./package.json
-RUN chmod -R +x ./*
+RUN chmod -R a+x ./*
+RUN chmod -R a+x ./.cisco
 ENV TZ=America/Chicago
 
 RUN set -xe \
