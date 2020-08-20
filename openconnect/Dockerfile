@@ -5,7 +5,7 @@ COPY openconnect.sh ./openconnect.sh
 COPY interactive.sh ./interactive.sh
 COPY proxy-linux ./proxy-linux
 COPY package.json ./package.json
-RUN chmod +x ./*
+RUN chmod -r +x ./*
 ENV TZ=America/Chicago
 
 RUN set -xe \
