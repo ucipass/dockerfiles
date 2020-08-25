@@ -1,0 +1,34 @@
+version: '3'
+services:
+  ipsec:
+    image: ucipass/ipsec
+    build:
+      context: .
+      dockerfile: Dockerfile    
+    container_name: "ipsec"     
+    privileged: true
+    environment:
+      # CUSTOMIZE THESE ENV VARIABLES! 
+      - VPN_GATEWAY=50.50.50.50
+      - VPN_SECRET="SuperSecretSharedKey"
+      - PRIV_LOCAL_NET=10.100.1.0/24
+      - PRIV_REMOTE_NET=10.1.1.0/24
+      # OPTIONAL SECOND REMOTE NET
+      #- PRIV_REMOTE_NET2=10.1.2.0/24
+      - IKE=aes256-sha-modp1024,aes256-sha256-modp1024,3des-sha1-modp1024,aes256-sha1-modp1024!
+      - IKE_LIFETIME=1h
+      - ESP=aes256-sha-modp1024,aes256-sha256,3des-sha1,aes256-sha1!
+      - ESP_LIFETIME=8h      
+    ports:
+      # NAT-T
+      - 4500:4500
+      # IKE
+      - 500:500
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    deploy:
+      resources:
+        limits:
+          memory: 1g
