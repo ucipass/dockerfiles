@@ -1,6 +1,6 @@
 on: push
 jobs:
-  push-sftp:
+  push-dyndns:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -9,7 +9,7 @@ jobs:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-      - name: Docker Build & Publish SFTP
+      - name: Docker Build & Publish Dyndns
         run: |
           docker build -f ./sftp/Dockerfile -t ucipass/dyndns ./dyndns
           docker push ucipass/dyndns
