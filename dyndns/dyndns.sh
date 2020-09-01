@@ -17,7 +17,7 @@ if ! [ -n "$DOMAIN" ]; then
   echo "No DOMAIN environment variable provided! Using hostname:$DOMAIN"
 fi
 
-if ! [ -n "$HOST" ] || [ "$HOST"="@" ]; then
+if ! [ -n "$HOST" ] || [ "$HOST" = "@" ]; then
   HOST=@
   FULLHOSTNAME=$DOMAIN
   echo "No HOST environment variable provided! Using hostname:$FULLHOSTNAME"
@@ -49,7 +49,7 @@ do
   IP=`curl -s ifconfig.me`
   DNSIP=`getent hosts $FULLHOSTNAME | awk '{printf $1}'`
 
-  if [ "$LASTIP" = "$IP" ] &&  [ "$DNSIP" = "$IP" ]; then
+  if [ "$DNSIP" = "$IP" ]; then
     echo "No change detected: $FULLHOSTNAME - Your IP:$IP DNS IP:$DNSIP"
     sleep $TIMER
     continue
@@ -58,11 +58,9 @@ do
   REPLY=`curl -s https://dynamicdns.park-your-domain.com/update?host=$HOST\&domain=$DOMAIN\&password=$PASS\&ip=$IP | grep errors`
   if ! [ -n "$REPLY" ]; then
     echo "DNS update successful: $FULLHOSTNAME - $IP"
-    LASTIP=$IP
   else
     echo "DNS update failed: $FULLHOSTNAME - $IP DNSIP:$DNSIP"
     echo "$REPLY"
-    LASTIP="FAILED"
   fi
   sleep $TIMER
 done

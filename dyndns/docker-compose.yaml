@@ -1,0 +1,18 @@
+# Sample file
+version: '3.7'
+services:
+    dyndns:
+        container_name: "dyndns"
+        restart: always
+        image: ucipass/dyndns
+        build:
+            context: .
+            dockerfile: Dockerfile    
+        image: ucipass/dyndns
+        environment: 
+        - PASS=abcdedfgfggd
+        - HOST=test
+        - DOMAIN=cooltest.site
+        # - IP=69.69.69.69
+        # - TIMER=600
+        # command: "/root/dyndns.sh"
