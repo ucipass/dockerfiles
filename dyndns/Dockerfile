@@ -2,7 +2,7 @@ FROM alpine:latest
 WORKDIR /root
 
 RUN set -xe \
-    && apk add --no-cache curl 
+    && apk add --no-cache curl    
 COPY dyndns.sh /root
 RUN chmod -R a+x /root/dyndns.sh
 

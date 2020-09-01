@@ -9,7 +9,7 @@ jobs:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-      - name: Docker Build & Publish Dyndns
+      - name: Docker Build & Publish dyndns 
         run: |
           docker build -f ./sftp/Dockerfile -t ucipass/dyndns ./dyndns
-          docker push ucipass/dyndns
+          docker push ucipass/dyndns 
