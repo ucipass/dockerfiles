@@ -11,5 +11,5 @@ jobs:
         run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
       - name: Docker Build & Publish dyndns 
         run: |
-          docker build -f ./sftp/Dockerfile -t ucipass/dyndns ./dyndns
+          docker build -f ./dyndns/Dockerfile -t ucipass/dyndns ./dyndns
           docker push ucipass/dyndns 
