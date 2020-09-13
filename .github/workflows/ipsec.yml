@@ -1,0 +1,15 @@
+on: push
+jobs:
+  push-ipsec:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Docker Login
+        env:
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+      - name: Docker Build & Publish Strongswan IPSEC
+        run: |
+          docker build -f ./ipsec/Dockerfile -t ucipass/ipsec ./ipsec
+          docker push ucipass/ipsec
