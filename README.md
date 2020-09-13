@@ -24,7 +24,7 @@ All of these Docker containers are meant to be in a test/dev environment and mus
 | docker stop CONTAINERID | Stop container with CONTAINERID |
 | docker stop $(docker ps -a -q) | Stop all containers |
 | docker rm CONTAINERID | Delete container with CONTAINERID |
-| docker rm $(docker ps -a -q) | Delete all stopped containers |
+| docker container prune | Delete all stopped containers |
 | docker rmi IMAGE | Delete container IMAGE |
 | docker rmi $(docker images -q) | Delete all container images |
 | docker rmi $(docker images \| grep "^<none>" \| awk '{ print $3}') | Remove all <none> Docker images - Linux only |
@@ -35,6 +35,7 @@ All of these Docker containers are meant to be in a test/dev environment and mus
 | docker images | List all local Docker images |
 | docker build –f  Dockerfile -t USERNAME/IMAGEID . | Build Docker Image in from current directory using Dockerfile |
 | docker login --username=USERNAME | Login to Docker Hub as USERNAME|
+| docker commit CONTAINERID USERNAME/IMAGEID | Create a new image from a container’s changes |
 | docker push USERNAME/IMAGEID | Push Image to Docker Hub |
 | docker pull USERNAME/IMAGEID | Pull Image from Docker Hub |
 | docker save USERNAME/IMAGE -o IMAGE.tar | Save Docker image as tar archive |
