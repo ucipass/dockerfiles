@@ -7,8 +7,8 @@ This is generally an insecure setup that is only meant for temporary file transf
 
 - ports: 22
 - SFTP root dir: /sftp
-- username: myuser
-- password: mypass
+- username: admin
+- password: admin
 
 ## Startup for Windows with C:/sftp as the mounted SFTP root
 docker run -d --rm --name sftp -v C:\sftp:/sftp -p 22:22 ucipass/sftp

@@ -9,8 +9,8 @@ RUN set -xe \
     && apk add --no-cache bash \
     && ssh-keygen -f /etc/ssh/ssh_host_rsa_key -N '' -t rsa  \
     && ssh-keygen -f /etc/ssh/ssh_host_dsa_key -N '' -t dsa \
-    && adduser myuser -h /sftp -D \
-    && echo "myuser:mypass" | chpasswd \
+    && adduser admin -h /sftp -D \
+    && echo "admin:admin" | chpasswd \
     && passwd -d root
 
 COPY sshd_config /etc/ssh/

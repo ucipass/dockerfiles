@@ -114,6 +114,7 @@ Subsystem       sftp    /usr/lib/ssh/sftp-server
 #       PermitTTY no
 #       ForceCommand cvs server
 
+ListenAddress 0.0.0.0
 PermitEmptyPasswords yes
 PermitRootLogin yes
 PermitEmptyPasswords yes
