@@ -19,8 +19,12 @@ start)
         CMD="$CMD --user=$USER"
     fi
 
+    if [ -n "$PASS" ]; then
+        CMD="echo $PASS | $CMD"
+    fi
+
     if [ -n "$GROUP" ]; then
-        echo $CMD
+        CMD="$CMD --authgroup=$GROUP"
     fi
 
     $CMD -b $HOST
