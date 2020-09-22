@@ -12,7 +12,7 @@ ENV TZ=America/Chicago
 RUN set -xe \
     && apt-get update -y \
     && DEBIAN_FRONTEND="noninteractive" apt-get -y install tzdata \
-    && apt-get install -y openssh-server openconnect bash nano curl wget xmlstarlet  
+    && apt-get install -y openssh-server openconnect bash nano curl wget xmlstarlet nmap traceroute
 
 COPY sshd_config /etc/ssh/sshd_config
 
