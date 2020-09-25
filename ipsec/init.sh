@@ -25,7 +25,7 @@ then
   echo "Creating loopvpn loopback interface..."
   ip link add name loopvpn  type dummy
   ip link set loopvpn up
-  ip address add 10.105.34.1/24 dev loopvpn
+  ip address add ${PRIV_LOCAL_IP} dev loopvpn
 fi
 
 cat > /etc/ipsec.secrets <<_EOF_
@@ -34,9 +34,9 @@ _EOF_
 
 cat > /etc/ipsec.conf <<_EOF_
 config setup
-        charondebug="all"
-        uniqueids=yes
-        strictcrlpolicy=no
+  charondebug="cfg 2, dmn 2, ike 2, net 2"
+  uniqueids=yes
+  strictcrlpolicy=no
 
 conn VPN_CONNECTION
   authby=secret
