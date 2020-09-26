@@ -4,6 +4,7 @@ RUN set -xe \
     && apk add --no-cache iptables openssl strongswan util-linux nano bash nmap
 
 COPY init.sh /init.sh
+RUN chmod a+x /init.sh
 COPY ipsec.py /ipsec.py
 
 # CUSTOMIZE THESE ENV VARIABLES! 
@@ -20,5 +21,5 @@ COPY ipsec.py /ipsec.py
 # ENV ESP_LIFETIME=1h
 
 EXPOSE 500/udp 4500/udp
-CMD ["bash -c /init.sh"]
+CMD ["/init.sh"]
 # ENTRYPOINT ["/docker-entrypoint.sh"]
