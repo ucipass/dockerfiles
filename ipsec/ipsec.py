@@ -29,10 +29,10 @@ except Exception as err:
 if exitcode: 
     sys.exit()
 
-
-config_dir="."
 if os.environ.get('CONFIG_DIR'): 
     config_dir = os.environ.get('CONFIG_DIR')
+else:
+    config_dir = "/etc"
 
 ipsec_config = """\
 config setup

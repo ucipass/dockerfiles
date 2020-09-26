@@ -1,10 +1,10 @@
-FROM alpine
+FROM python:3.8-alpine
 
 RUN set -xe \
     && apk add --no-cache iptables openssl strongswan util-linux nano bash nmap
 
 COPY init.sh /init.sh
-COPY docker-entrypoint.sh /docker-entrypoint.sh
+COPY ipsec.py /ipsec.py
 
 # CUSTOMIZE THESE ENV VARIABLES! 
 # ENV VPN_GATEWAY=12.2.84.187

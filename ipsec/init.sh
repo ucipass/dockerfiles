@@ -13,12 +13,12 @@
 
 python3 ipsec.py
 
-if [ -f /sys/class/net/loopvpn ]
+if [ -L /sys/class/net/loopvpn ]
 then
   echo "Deleting loopvpn loopback interface..."
   ip link delete name loopvpn
 else
-  echo "Creating loopvpn loopback interface..."
+  echo "Creating loopvpn loopback interface IP: ${PRIV_LOCAL_IP}"
   ip link add name loopvpn  type dummy
   ip link set loopvpn up
   ip address add ${PRIV_LOCAL_IP} dev loopvpn  
