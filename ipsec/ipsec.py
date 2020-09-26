@@ -69,7 +69,7 @@ conn VPN_CONNECTION
 )
 
 ipsec_secret = """\
- : PSK "{}"
+ : PSK '{}'
 """.format( params["VPN_SECRET"] )
 
 with open( os.path.join( config_dir, "ipsec.conf"), "w") as file:
