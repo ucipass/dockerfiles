@@ -20,5 +20,5 @@ COPY docker-entrypoint.sh /docker-entrypoint.sh
 # ENV ESP_LIFETIME=1h
 
 EXPOSE 500/udp 4500/udp
-
+CMD ["/init.sh"]
 # ENTRYPOINT ["/docker-entrypoint.sh"]

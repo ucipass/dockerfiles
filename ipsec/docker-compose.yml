@@ -21,7 +21,7 @@ services:
     ports:
       - 4500:4500/udp
       - 500:500/udp
-    entrypoint: "tail -f /dev/null"
+    cmd: "/root/init.sh"
     ulimits:
       memlock:
         soft: -1
