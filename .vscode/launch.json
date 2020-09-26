@@ -1,0 +1,26 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "internalConsole",
+            "env": {
+                "VPN_GATEWAY": "12.2.84.187",
+                "VPN_SECRET": "evHcFzgB6.AAAA",
+                "PRIV_REMOTE_NET": "10.1.0.0/16",
+                "PRIV_LOCAL_NET": "192.168.1.0/26",
+                "PRIV_LOCAL_IP": "192.168.1.1/26",
+                "IKE": "es128-sha-modp1024,aes256-sha-modp1024,aes256-sha256-modp1024,3des-sha1-modp1024,aes256-sha1-modp1024!",
+                "IKE_LIFETIME": "8h",
+                "ESP": "aes-sha-modp1024,aes256-sha-modp1024,aes256-sha256,3des-sha1,aes256-sha1!",
+                "ESP_LIFETIME": "1h"
+            }
+        }
+    ]
+}
