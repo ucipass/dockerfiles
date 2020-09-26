@@ -20,5 +20,5 @@ COPY ipsec.py /ipsec.py
 # ENV ESP_LIFETIME=1h
 
 EXPOSE 500/udp 4500/udp
-CMD ["/init.sh"]
+CMD ["bash -c /init.sh"]
 # ENTRYPOINT ["/docker-entrypoint.sh"]
