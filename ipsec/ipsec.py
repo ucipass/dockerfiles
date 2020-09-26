@@ -75,5 +75,5 @@ ipsec_secret = """\
 with open( os.path.join( config_dir, "ipsec.conf"), "w") as file:
     file.write(ipsec_config)
 
-with open( os.path.join( config_dir, "ipsec.secret"), "w") as file:
+with open( os.path.join( config_dir, "ipsec.secrets" ), "w") as file:
     file.write(ipsec_secret)
