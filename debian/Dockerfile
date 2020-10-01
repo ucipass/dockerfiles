@@ -6,7 +6,7 @@ ENV TERM=linux
 RUN set -xe \
     && apt-get update -y \
     && DEBIAN_FRONTEND="noninteractive" apt-get -y install tzdata \
-    && apt-get install -y openssh-server openconnect bash nano vim curl wget xmlstarlet python3-pip net-tools iperf iperf3 certbot open traceroute dnsutils \
+    && apt-get install -y openssh-server openconnect bash nano vim curl wget xmlstarlet python3-pip net-tools iperf iperf3 certbot open traceroute dnsutils nmap\
     && useradd -m -d /admin -s /bin/bash admin \
     && echo "admin:admin" | chpasswd \
     && passwd -d root \

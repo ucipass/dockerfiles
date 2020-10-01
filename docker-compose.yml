@@ -1,0 +1,13 @@
+version: '3'
+services:
+  ipsec:
+    image: ucipass/debian
+    build:
+      context: .
+      dockerfile: Dockerfile    
+    container_name: "debian"     
+    privileged: true
+    environment:
+      # CUSTOMIZE THESE ENV VARIABLES!  
+    ports:
+      - 2222:2222/tcp

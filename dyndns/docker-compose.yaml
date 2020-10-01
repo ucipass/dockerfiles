@@ -13,6 +13,7 @@ services:
         - PASS=abcdedfgfggd
         - HOST=test
         - DOMAIN=cooltest.site
+        - TIMER=600
         # - IP=69.69.69.69
         # - TIMER=600
         # command: "/root/dyndns.sh"

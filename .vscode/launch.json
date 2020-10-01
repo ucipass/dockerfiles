@@ -9,7 +9,7 @@
             "type": "python",
             "request": "launch",
             "program": "${file}",
-            "console": "internalConsole",
+            "console": "integratedTerminal",
             "env": {
                 "VPN_GATEWAY": "5.5.5.5",
                 "VPN_SECRET": "MYSECRETKEY",
@@ -20,6 +20,16 @@
                 "IKE_LIFETIME": "8h",
                 "ESP": "aes-sha-modp1024,aes256-sha-modp1024,aes256-sha256,3des-sha1,aes256-sha1!",
                 "ESP_LIFETIME": "1h",
+                "CONFIG_DIR": "."
+            }
+        },
+        {
+            "name": "Python: Current File - no env",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "env": {
                 "CONFIG_DIR": "."
             }
         }
