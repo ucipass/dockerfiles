@@ -4,8 +4,8 @@ services:
         container_name: "webdav"
         restart: always
         image: ucipass/webdav
-        stdin_open: true # docker run -i
-        tty: true        # docker run -t        
+        # stdin_open: true # docker run -i
+        # tty: true        # docker run -t        
         build:
             context: .
             dockerfile: Dockerfile    
@@ -13,7 +13,5 @@ services:
         environment: 
         - USER=test
         - PASS=test123
-        # command: "/root/dyndns.sh"
         ports:
-        # Graylog web interface and REST API
         - 8080:80

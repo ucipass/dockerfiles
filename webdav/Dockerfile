@@ -17,5 +17,6 @@ RUN rm /var/www/html/*
 COPY index.html /var/www/html/index.html
 COPY default /etc/nginx/sites-available/default
 COPY init.sh /root/init.sh
+RUN chmod 755 /root/init.sh
 
 CMD ["/root/init.sh"]
