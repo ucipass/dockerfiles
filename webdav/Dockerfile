@@ -8,7 +8,7 @@ RUN set -xe \
     && apt-get install -y procps nano vim curl wget net-tools traceroute dnsutils nmap \
     && apt-get install -y nginx libnginx-mod-http-headers-more-filter libnginx-mod-http-dav-ext apache2-utils
 
-RUN sed -i '1s/^/daemon off;\n /'    /etc/nginx/nginx.conf
+RUN sed -i '1s/^/daemon off;\n/'    /etc/nginx/nginx.conf
 RUN sed -i  's/^user .*/user root;/' /etc/nginx/nginx.conf
 RUN sed -i  's/.*access_log.*/   access_log \/dev\/stdout;/' /etc/nginx/nginx.conf
 RUN sed -i  's/.*error_log.*/    error_log  \/dev\/stdout;/' /etc/nginx/nginx.conf
