@@ -16,35 +16,49 @@ server {
         create_full_put_path on;
         try_files $uri $uri/ =404;
 
-	if ($request_method = MKCOL) {
-	    rewrite ^(.*[^/])$ $1/ break;
-	}
-	if (-d $request_filename) {
-	    rewrite ^(.*[^/])$ $1/ break;
-	}
-	
-	set $destination $http_destination;
-	set $parse "";
-	if ($request_method = MOVE) {
-	    set $parse "${parse}M";
-	}
-	if ($request_method = COPY) {
-	    set $parse "${parse}M";
-	}
-	if (-d $request_filename) {
-	    rewrite ^(.*[^/])$ $1/ break;
-	    set $parse "${parse}D";
-	}
-	if ($destination ~ ^https://dav.example.com/(.*)$) {
-	    set $ob $1;
-	    set $parse "${parse}R${ob}";
-	}
-	if ($parse ~ ^MDR(.*[^/])$) {
-	    set $mvpath $1;
-	    set $destination "https://dav.example.com/${mvpath}/";
-	    more_set_input_headers "Destination: $destination";
-	}
+			if ($request_method = MKCOL) {
+				rewrite ^(.*[^/])$ $1/ break;
+			}
+			if (-d $request_filename) {
+				rewrite ^(.*[^/])$ $1/ break;
+			}
+			
+			set $destination $http_destination;
+			set $parse "";
+			if ($request_method = MOVE) {
+				set $parse "${parse}M";
+			}
+			if ($request_method = COPY) {
+				set $parse "${parse}M";
+			}
+			if (-d $request_filename) {
+				rewrite ^(.*[^/])$ $1/ break;
+				set $parse "${parse}D";
+			}
+			if ($destination ~ ^https://kpan.arato.biz/(.*)$) {
+				set $ob $1;
+				set $parse "${parse}R${ob}";
+			}
+			if ($parse ~ ^MDR(.*[^/])$) {
+				set $mvpath $1;
+				set $destination "https://kpan.arato.biz/${mvpath}/";
+				more_set_input_headers "Destination: $destination";
+			}
 
         }
+
+		location ~ \.(_.*|DS_Store|Spotlight-V100|TemporaryItems|Trashes|hidden|localized)$ {
+			access_log  off;
+			error_log   off;
+
+			if ($request_method = PUT) {
+				return 403;
+			}
+			return 404;
+		}
+
+		location ~ \.metadata_never_index$ {
+			return 200 "Don't index this drive, Finder!";
+		}
 
 }
