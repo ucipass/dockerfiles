@@ -10,8 +10,8 @@ services:
             context: .
             dockerfile: Dockerfile    
         image: ucipass/webdav
-        environment: 
-        - USER=test
-        - PASS=test123
+        # environment: 
+        # - USER=test
+        # - PASS=test123
         ports:
-        - 8080:80
+        - 8001:80

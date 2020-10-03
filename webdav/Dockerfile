@@ -11,7 +11,7 @@ RUN set -xe \
 RUN sed -i '1s/^/daemon off;\n/'    /etc/nginx/nginx.conf
 RUN sed -i  's/^user .*/user root;/' /etc/nginx/nginx.conf
 RUN sed -i  's/.*access_log.*/   access_log \/dev\/stdout;/' /etc/nginx/nginx.conf
-RUN sed -i  's/.*error_log.*/    error_log  \/dev\/stdout;/' /etc/nginx/nginx.conf
+RUN sed -i  's/.*error_log.*/    error_log  \/dev\/stdout notice;/' /etc/nginx/nginx.conf
 
 RUN rm /var/www/html/*
 COPY index.html /var/www/html/index.html

@@ -1,4 +1,6 @@
 dav_ext_lock_zone zone=foo:10m;
+rewrite_log on;
+error_log /dev/stdout info;
 
 server {
     listen 80 default_server;
@@ -8,57 +10,62 @@ server {
     server_name _;
 
     location / {
+
+
+		set $destination $http_destination;
+		set $parse "";
+
+		if ($request_method = MKCOL) {
+			set $parse "MKCOL";
+		}
+
+		if ($request_method = MOVE) {
+			set $parse "MOVECOPY";
+		}
+
+		if ($request_method = COPY) {
+			set $parse "MOVECOPY";
+		}
+
+		if ($request_method = DELETE) {
+			set $parse "DELETE";
+		}
+
+		if ($request_method = PROPFIND) {
+			set $parse "PROPFIND";
+		}
+
+		if (-d $request_filename) {
+			set $parse "${parse}DIR";
+		}
+
+		if ($parse ~ ^MKCOL$) {
+			rewrite ^(.*[^/])$ $1/ break;
+		}
+
+		if ($parse ~ ^DELETEDIR$) {
+			rewrite ^(.*[^/])$ $1/ break;
+		}
+
+		if ($parse ~ ^PROPFINDDIR$) {
+			rewrite ^(.*[^/])$ $1/ break;
+		}
+
+		if ($parse ~ ^MOVECOPYDIR$) {
+			more_set_input_headers "Destination: $destination/";
+			rewrite ^(.*[^/])$ $1/ break;
+		}
+
+	
+
 		#auth_basic "Restricted";
         #auth_basic_user_file /etc/nginx/webdavpasswd;
         dav_ext_lock zone=foo;
         dav_methods PUT DELETE MKCOL COPY MOVE;
         dav_ext_methods PROPFIND OPTIONS LOCK UNLOCK;
         create_full_put_path on;
-        try_files $uri $uri/ =404;
 
-			if ($request_method = MKCOL) {
-				rewrite ^(.*[^/])$ $1/ break;
-			}
-			if (-d $request_filename) {
-				rewrite ^(.*[^/])$ $1/ break;
-			}
-			
-			set $destination $http_destination;
-			set $parse "";
-			if ($request_method = MOVE) {
-				set $parse "${parse}M";
-			}
-			if ($request_method = COPY) {
-				set $parse "${parse}M";
-			}
-			if (-d $request_filename) {
-				rewrite ^(.*[^/])$ $1/ break;
-				set $parse "${parse}D";
-			}
-			if ($destination ~ ^https://kpan.arato.biz/(.*)$) {
-				set $ob $1;
-				set $parse "${parse}R${ob}";
-			}
-			if ($parse ~ ^MDR(.*[^/])$) {
-				set $mvpath $1;
-				set $destination "https://kpan.arato.biz/${mvpath}/";
-				more_set_input_headers "Destination: $destination";
-			}
+    }
 
-        }
-
-		location ~ \.(_.*|DS_Store|Spotlight-V100|TemporaryItems|Trashes|hidden|localized)$ {
-			access_log  off;
-			error_log   off;
-
-			if ($request_method = PUT) {
-				return 403;
-			}
-			return 404;
-		}
-
-		location ~ \.metadata_never_index$ {
-			return 200 "Don't index this drive, Finder!";
-		}
 
 }
