@@ -12,35 +12,60 @@ server {
     location / {
 
 		if ($request_method = MKCOL) {
-			rewrite ^(.*[^/])$ $1/ break;
+				rewrite ^(.*[^/])$ $1/ break;
+		}
+		if (-d $request_filename) {
+				rewrite ^(.*[^/])$ $1/ break;
 		}
 
 		set $destination $http_destination;
 		set $parse "";
-		if ($request_method = MOVE) {
-			set $parse "${parse}M";
-		}
 
+		if ($request_method = MOVE) {
+				set $parse "${parse}M";
+		}
 		if ($request_method = COPY) {
-			set $parse "${parse}M";
+				set $parse "${parse}M";
+		}
+		if ($request_method = DELETE) {
+				set $parse "${parse}D";
+		}
+		if ($request_method = PUT) {
+				set $parse "${parse}P";
 		}
 
 		if (-d $request_filename) {
-			rewrite ^(.*[^/])$ $1/ break;
-			set $parse "${parse}D";
+				#rewrite ^(.*[^/])$ $1/ break;
+				set $parse "${parse}D";
+		}
+		if (-f $request_filename) {
+				#rewrite ^(.*[^/])$ $1/ break;
+				set $parse "${parse}F";
 		}
 
-		if ($destination ~ ^http://kpan.arato.biz/(.*)$) {
-			set $ob $1;
-			set $parse "${parse}R${ob}";
+		if ($parse ~ ^DD$) {
+				rewrite ^(.*[^/])$ $1/ break;
 		}
-
+		if ($parse ~ ^PF?$) {
+				break;
+		}
+		if ($destination ~ ^https?://[^/]*/(.*)$) {
+				set $ob $1;
+				set $parse "${parse}R${ob}";
+		}
 		if ($parse ~ ^MDR(.*[^/])$) {
-			set $mvpath $1;
-			set $destination "http://kpan.arato.biz/${mvpath}/";
-			more_set_input_headers "Destination: $destination";
+				set $mvpath $1;
+				set $destination "/${mvpath}/";
+				more_set_input_headers "Destination: $destination";
+				rewrite ^(.*[^/])$ $1/ break;
 		}
-	
+		if ($parse ~ ^MFR(.*[^/])$) {
+				set $mvpath $1;
+				set $destination "/${mvpath}";
+				more_set_input_headers "Destination: $destination";
+				rewrite ^(.*[^/])$ $1 break;
+		}
+
 		#auth_basic "Restricted";
         #auth_basic_user_file /etc/nginx/webdavpasswd;
         dav_ext_lock zone=foo;
