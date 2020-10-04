@@ -30,7 +30,7 @@ server {
 			set $parse "${parse}D";
 		}
 
-		if ($destination ~ ^https://kpan.arato.biz/(.*)$) {
+		if ($destination ~ ^http://kpan.arato.biz/(.*)$) {
 			set $ob $1;
 			set $parse "${parse}R${ob}";
 		}

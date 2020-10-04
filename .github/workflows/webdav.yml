@@ -9,7 +9,7 @@ jobs:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-      - name: Docker Build & Publish SFTP
+      - name: Docker Build & Publish webdav
         run: |
           docker build -f ./webdav/Dockerfile -t ucipass/webdav ./webdav
           docker push ucipass/webdav
