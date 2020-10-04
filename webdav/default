@@ -37,7 +37,7 @@ server {
 
 		if ($parse ~ ^MDR(.*[^/])$) {
 			set $mvpath $1;
-			set $destination "https://kpan.arato.biz/${mvpath}/";
+			set $destination "http://kpan.arato.biz/${mvpath}/";
 			more_set_input_headers "Destination: $destination";
 		}
 	
