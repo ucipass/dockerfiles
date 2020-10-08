@@ -1,7 +1,6 @@
 FROM debian:testing
 WORKDIR /root
 ENV TZ=America/Chicago
-# ENV TERM=linux
 
 RUN set -xe \
     && apt-get update -y \
