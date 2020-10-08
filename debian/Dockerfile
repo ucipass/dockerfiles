@@ -33,7 +33,6 @@ COPY csd-wrapper.sh .cisco/csd-wrapper.sh
 RUN chmod    a+x .cisco/csd-wrapper.sh
 COPY openconnect.sh ./openconnect.sh
 RUN chmod    a+x ./openconnect.sh
-COPY GlobalProtect5.1.6.deb ./GlobalProtect5.1.6.deb
 
 # ENTRYPOINT /usr/sbin/sshd -D && /bin/bash
 # CMD ["/bin/sh","-c"," WHATEVER_PROGRAM ; trap : TERM INT; (while true; do sleep 1000; done) & wait"]
