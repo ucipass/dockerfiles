@@ -1,5 +1,5 @@
 #!/bin/bash -e
-#
+#   
 # gen config files for strongswan
 #
 # - VPN_GATEWAY
