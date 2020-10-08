@@ -1,4 +1,7 @@
-on: push
+on: 
+  push:
+    paths:
+    - 'radius*'
 jobs:
   dockerpush:
     runs-on: ubuntu-latest

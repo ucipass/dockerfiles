@@ -1,4 +1,7 @@
-on: push
+on: 
+  push:
+    paths:
+    - 'openconnect*'
 jobs:
   dockerpush:
     runs-on: ubuntu-latest

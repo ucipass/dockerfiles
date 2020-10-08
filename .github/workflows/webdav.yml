@@ -1,4 +1,7 @@
-on: push
+on: 
+  push:
+    paths:
+    - 'webdav*'
 jobs:
   push-webdav:
     runs-on: ubuntu-latest

@@ -1,4 +1,7 @@
-on: push
+on: 
+  push:
+    paths:
+    - 'sftp*'
 jobs:
   push-sftp:
     runs-on: ubuntu-latest

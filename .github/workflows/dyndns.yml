@@ -1,4 +1,7 @@
-on: push
+on: 
+  push:
+    paths:
+    - 'dyndns*'
 jobs:
   push-dyndns:
     runs-on: ubuntu-latest
