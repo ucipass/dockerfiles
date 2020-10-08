@@ -1,7 +1,7 @@
 #!/bin/bash
 # Cisco Anyconnect CSD wrapper for OpenConnect
 #
-# Instead of actually downloading and spawning the hostscan trojan,  
+# Instead of actually downloading and spawning the hostscan trojan,      
 # this script posts results directly. Ideally we would work out how to
 # interpret the DES-encrypted (yay Cisco!) tables.dat and basically
 # reimplement the necessary parts hostscan itself. But prepackaged
