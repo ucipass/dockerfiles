@@ -1,7 +1,7 @@
 on: 
   push:
     paths:
-    - 'ipsec*'
+    - 'ipsec/**'
 jobs:
   push-ipsec:
     runs-on: ubuntu-latest
