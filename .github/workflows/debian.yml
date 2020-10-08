@@ -1,9 +1,9 @@
 on: 
   push:
     paths:
-    - 'debian*'
+      - 'debian*'
 jobs:
-  push-debian:
+  debian:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1

@@ -1,9 +1,9 @@
 on: 
   push:
     paths:
-    - 'radius*'
+      - 'radius*'
 jobs:
-  dockerpush:
+  radius:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1

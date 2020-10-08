@@ -1,9 +1,9 @@
 on: 
   push:
     paths:
-    - 'webdav*'
+      - 'webdav*'
 jobs:
-  push-webdav:
+  webdav:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
