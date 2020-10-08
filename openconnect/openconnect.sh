@@ -1,13 +1,18 @@
 #!/bin/bash
 
 pidfile="/tmp/openconnect-pid"
-CMD="openconnect --pid-file=$pidfile --csd-user=root --csd-wrapper=/root/.cisco/csd-wrapper.sh"
+CMD="openconnect --pid-file=$pidfile --csd-user=root --csd-wrapper=/root/.cisco/csd-wrapper.sh -b "
 
 case "$1" in
 start)
     if [ -f $pidfile ]; then
         echo "Openconnect already started. Use $0 <start|stop>"
         exit 1
+    fi
+
+    if [ -n "$GP" ]; then
+        echo "GlobalProtect VPN Connection...."
+        CMD="openconnect --pid-file=$pidfile --no-dtls --protocol=gp -b "
     fi
 
     if [ -z "$HOST" ]; then
@@ -24,7 +29,7 @@ start)
     fi
 
     if [ -n "$PASS" ]; then
-        echo $PASS | $CMD -b $HOST
+        echo $PASS | $CMD $HOST
     else
         $CMD -b $HOST
     fi
