@@ -1,7 +1,5 @@
 on: 
   push:
-    paths:
-      - 'debian*'
 jobs:
   debian:
     runs-on: ubuntu-latest
