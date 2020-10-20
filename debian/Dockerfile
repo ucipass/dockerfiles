@@ -12,6 +12,7 @@ RUN set -xe \
     && mkdir -p /run/sshd \
     && ssh-keygen -A -v 
 
+
 ## SSH/SCP/SFTP
 COPY sshd_config /etc/ssh/sshd_config
 
