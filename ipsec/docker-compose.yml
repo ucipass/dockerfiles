@@ -9,8 +9,8 @@ services:
     privileged: true
     environment:
       # CUSTOMIZE THESE ENV VARIABLES! 
-      - VPN_GATEWAY=12.2.84.187
-      - VPN_SECRET=evHcFzgB6.AAAA
+      - VPN_GATEWAY=X.X.X.X
+      - VPN_SECRET=secretkey
       - PRIV_REMOTE_NET=10.1.0.0/16
       - PRIV_LOCAL_NET=192.168.1.0/26
       - PRIV_LOCAL_IP=192.168.1.1/26
