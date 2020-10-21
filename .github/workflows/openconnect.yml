@@ -1,7 +1,5 @@
 on: 
   push:
-    paths:
-      - 'openconnect*'
 jobs:
   openconnect:
     runs-on: ubuntu-latest

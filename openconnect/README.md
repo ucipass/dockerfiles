@@ -10,7 +10,11 @@ chrome.exe --proxy-server="http://127.0.0.1:3128" -profile-directory="<DIR>" --u
 - password: <empty>
 
 
-## Example
+## Example for Cisco VPN Anyconenct connection
 ```
 docker run --rm -e HOST=<HOSTNAME> -e USER=<USER> --name oc -it -p 3128:3128 -p 2222:22 --privileged ucipass/openconnect
+```
+## Example for Palo Alto GlobalProtect VPN connection
+```
+docker run --rm -e HOST=<HOSTNAME> -e USER=<USER> -e GP=PALO --name oc -it -p 3128:3128 -p 2222:22 --privileged ucipass/openconnect
 ```
