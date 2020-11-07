@@ -46,6 +46,7 @@ conn VPN_CONNECTION
   leftid={PUB_LOCAL_IP}
   leftsubnet={PRIV_LOCAL_NET}
   right={VPN_GATEWAY}
+  rightid=%any
   rightsubnet={PRIV_REMOTE_NET}
   ike={IKE}
   ikelifetime={IKE_LIFETIME}
