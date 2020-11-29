@@ -34,6 +34,6 @@ RUN chmod    a+x .cisco/csd-wrapper.sh
 COPY openconnect.sh ./openconnect.sh
 RUN chmod    a+x ./openconnect.sh
 
-# ENTRYPOINT /usr/sbin/sshd -D && /bin/bash
+ENTRYPOINT /usr/sbin/sshd -D && /bin/bash
 # CMD ["/bin/sh","-c"," WHATEVER_PROGRAM ; trap : TERM INT; (while true; do sleep 1000; done) & wait"]
 # CMD ["/bin/sh", "-c", "/root/interactive.sh"]
