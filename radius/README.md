@@ -3,13 +3,23 @@ This is generally an insecure setup that is only meant for temporary radius auth
 ## Settings
 
 - ports: 1812-1813
+- network: 0.0.0.0/0
+- secret: mysecret
+
 - username: myuser
 - password: mypass
 - Cisco-AVPair : "shell:priv-lvl=15"
-- secret: mysecret
-- network: 0.0.0.0/0
 
-## Startup
+- username: paloadmin
+- password: paloadmin
+- PaloAlto-Admin-Role: "auditadmin"
+
+## Simple start with docker-compose and abode default config
+```
+docker-compose up
+```
+
+## Startup for testing
 ```
 docker run -d --rm --name myradius -p 1812-1813:1812-1813/udp ucipass/radius
 ```
