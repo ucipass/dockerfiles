@@ -1,0 +1,7 @@
+myuser		Cleartext-Password := "mypass"
+		Service-Type = NAS-Prompt-User,
+		Cisco-AVPair = "shell:priv-lvl=15"
+paloadmin	Cleartext-Password := "paloadmin"
+		PaloAlto-Admin-Role = "auditadmin"
+#		PaloAlto-Admin-Access-Domain = "accessdomain1",
+		

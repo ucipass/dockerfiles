@@ -1,0 +1,20 @@
+services:
+  radius: 
+    container_name: "radius" 
+    image: freeradius/freeradius-server:latest
+    volumes: 
+      - type: bind
+        source: /containers/radius/clients.conf
+        target: /etc/raddb/clients.conf
+      - type: bind
+        source: /containers/radius/authorize
+        target: /etc/raddb/mods-config/files/authorize
+    ports: 
+      - 1812:1812/udp
+      - 1813:1813/udp
+    command: -X
+    #command: --logpath /dev/null
+    # restart: unless-stopped
+    #environment:
+    #  - MONGO_INITDB_ROOT_USERNAME=admin 
+    #  - MONGO_INITDB_ROOT_PASSWORD=admin
