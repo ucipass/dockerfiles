@@ -20,6 +20,10 @@ start)
         exit 1
     fi
 
+    if [ -n "$CERT" ]; then
+        CMD="$CMD --servercert $CERT "
+    fi
+
     if [ -n "$USER" ]; then
         CMD="$CMD --user=$USER"
     fi

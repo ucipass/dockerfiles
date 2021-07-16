@@ -17,5 +17,5 @@ docker run --rm -e HOST=<HOSTNAME> -e USER=<USER> --name oc -it -p 3128:3128 -p 
 ```
 ## Example for Palo Alto GlobalProtect VPN connection
 ```
-docker run --rm -e HOST=<HOSTNAME> -e USER=<USER> -e GP=PALO --name oc -it -p 3128:3128 -p 2222:22 --privileged ucipass/openconnect
+docker run --rm -e HOST=<HOSTNAME> -e CERT=<CERT> -e USER=<USER> -e GP=PALO --name oc -it -p 3128:3128 -p 2222:22 --privileged ucipass/openconnect
 ```
