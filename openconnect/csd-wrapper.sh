@@ -12,7 +12,7 @@
 # server's security policy with lies. This script exists as an example
 # to work from.
 
-if ! xmlstarlet --version > /dev/null 2>&1; then
+if ! xmlstarlet --version > /dev/null 2>&1; then 
     echo "************************************************************************" >&2
     echo "WARNING: xmlstarlet not found in path; CSD token extraction may not work" >&2
     echo "************************************************************************" >&2
